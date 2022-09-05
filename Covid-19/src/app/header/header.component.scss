@@ -1,0 +1,44 @@
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: auto;
+  background: #252b33;
+}
+
+.header {
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 20px;
+    &:hover {
+      cursor: pointer;
+      color: #f15a22;
+    }
+  }
+  img {
+    width: 150px;
+    margin: 10px;
+  }
+
+  &--right {
+    margin-left: auto;
+    padding-right: 10px;
+    display: flex;
+  }
+  .list-item-active {
+    color: #f15a22 !important;
+  }
+}
