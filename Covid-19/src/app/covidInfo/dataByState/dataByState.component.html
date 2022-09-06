@@ -1,3 +1,87 @@
-<p>
-  dataByState works!
-</p>
+<div class="stateList">
+  <div
+    *ngFor="let item of stateList"
+    class="list"
+    [class.active]="
+      selectedStateCode.toLocaleLowerCase() ==
+      item.state_code.toLocaleLowerCase()
+    "
+    (click)="getDataByState(item.state_code, item.name)"
+  >
+    <a>{{ item.state_code }}</a>
+  </div>
+</div>
+
+<div class="state">
+  <h1>{{ selectedStateName }}</h1>
+  <p>State’s dataset was last updated March 7, 2021 2:59 am ET</p>
+
+  <div class="stateData" *ngIf="dataByState">
+    <div class="mainBox">
+      <div class="title">Cases</div>
+      <div class="subtitle">
+        Total Cases <span>{{ dataByState.cases.total }}</span>
+      </div>
+
+      <div class="subtitle">
+        confirmed Cases <span> {{ dataByState.cases.confirmed }} </span>
+      </div>
+    </div>
+    <div class="mainBox">
+      <div class="title">Viral (PCR) tets</div>
+      <div class="subtitle">
+        Total tests (test encounters)
+        <span>
+          {{
+            dataByState.tests.pcr.encounters.total
+              ? dataByState.tests.pcr.total
+              : "Not Reported"
+          }}</span
+        >
+      </div>
+      <div class="subtitle">
+        Total tests (specimens)
+
+        <span
+          >{{
+            dataByState.tests.pcr.specimens.total
+              ? dataByState.tests.pcr.total
+              : "Not Reported"
+          }}
+        </span>
+      </div>
+      <div class="subtitle">
+        Total tests (people)
+
+        <span
+          >{{
+            dataByState.tests.pcr.people.total
+              ? dataByState.tests.pcr.people.total
+              : "Not Reported"
+          }}
+        </span>
+      </div>
+    </div>
+    <div class="mainBox">
+      <div class="title">Hospitalization</div>
+      <div class="subtitle">
+        Now hospitalization
+        <span>{{ dataByState.outcomes.hospitalized.currently }}</span>
+      </div>
+      <div class="subtitle">
+        Now in ICU
+        <span>{{
+          dataByState.outcomes.hospitalized.in_icu.currently
+            ? dataByState.outcomes.hospitalized.in_icu.currently
+            : "Not Reported"
+        }}</span>
+      </div>
+    </div>
+    <div class="mainBox">
+      <div class="title">Outcomes</div>
+      <div class="subtitle">
+        Deaths <span>{{ dataByState.outcomes.death.total }}</span>
+      </div>
+    </div>
+  </div>
+</div>

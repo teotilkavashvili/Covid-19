@@ -34,8 +34,5 @@ export class UsDataService {
       obj.death += el.outcomes.death.total.value;
       obj.hospitalized += el.outcomes.hospitalized.currently.value;
     });
-
-    console.log(obj.cases);
-    console.log(obj.death);
   }
 }

@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row class="justify-content-between">
-    <div class="header header__wrapper">
+    <div class="header header__wrapper" style="margin-top: 80px">
       <div header--left>
         <div class="logo">
           <img
@@ -22,10 +22,9 @@
             <a
               mat-list-item
               routerLinkActive="list-item-active"
-              href="https://covidtracking.com/analysis-updates"
-              target="_blank"
+              routerLink="/data"
             >
-              Analysis & Updates
+              Data by State
             </a>
           </li>
         </ul>
@@ -33,3 +32,4 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
+<app-shared *ngIf="isCovidData" [isUS]="isUs"></app-shared>

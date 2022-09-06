@@ -11,11 +11,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { HeaderComponent } from './header/header.component';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
-import { UsDataComponent } from './covidInfo/usData/usData.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedComponent } from './covidInfo/shared/shared.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, UsDataComponent],
+  declarations: [AppComponent, HeaderComponent, SharedComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,8 +27,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatTableModule,
-    MatPaginatorModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

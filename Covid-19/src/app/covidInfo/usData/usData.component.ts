@@ -22,7 +22,6 @@ export class UsDataComponent implements OnInit {
   ];
 
   usDataSource = new MatTableDataSource<any>([]);
-  @ViewChild(MatSort) sort: MatSort = new MatSort();
   @ViewChild(MatPaginator) paginator: MatPaginator = new MatPaginator(
     new MatPaginatorIntl(),
     ChangeDetectorRef.prototype
@@ -32,6 +31,7 @@ export class UsDataComponent implements OnInit {
   // @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
   pageSizes = [10, 20, 50, 100];
+
   ngAfterViewInit() {
     this.usDataSource.paginator = this.paginator;
   }
@@ -41,9 +41,9 @@ export class UsDataComponent implements OnInit {
   }
   fillSlotCategoryGrid() {
     this.usCasesService.getUsCovidData().subscribe((cases: any[]) => {
-      console.log('cases', cases);
       this.data = cases;
       this.usDataSource = new MatTableDataSource<any>(cases);
+      this.usDataSource.paginator = this.paginator;
     });
   }
 }

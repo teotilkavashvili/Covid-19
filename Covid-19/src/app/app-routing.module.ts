@@ -3,8 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsDataComponent } from './covidInfo/usData/usData.component';
 
 const routes: Routes = [
-  { path: ' ', redirectTo: 'us', pathMatch: 'full' },
-  { path: 'us', component: UsDataComponent },
+  { path: '', redirectTo: 'data', pathMatch: 'full' },
+  {
+    path: 'data',
+    loadChildren: () =>
+      import('./covidInfo/dataByState/dataByState.module').then(
+        (m) => m.DataByStateModule
+      ),
+  },
+  {
+    path: 'us',
+    loadChildren: () =>
+      import('./covidInfo/usData/usData.module').then((m) => m.UsDataModule),
+  },
 ];
 
 @NgModule({
